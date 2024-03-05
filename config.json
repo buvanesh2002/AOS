@@ -1,0 +1,9 @@
+{
+    "port":":8087",
+    "mongourl": "mongodb://localhost:27017",
+    "uiDirectory":"/home/bhuvaneswaran/Documents/S8-project/aviculture/AOS/static",
+    "db":"Login",
+    "colleection":"users",
+    "Addflock":"Flock"
+    
+}
