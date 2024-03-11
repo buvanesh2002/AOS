@@ -1,0 +1,50 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <h2>+ADD FLOCK</h2>
+  
+      <div class="form-group">
+        <label for="mortality">MORTALITY</label>
+        <input matInput type="number" id="mortality" name="mortality" [(ngModel)]="flockData.mortality" required>
+        <mat-error *ngIf="f.submitted && f.controls['mortality'].errors?.['required']">*required</mat-error>
+      </div>
+  
+      <div class="form-group">
+        <label for="extraeggs">EXTRA EGGS</label>
+        <input matInput type="number" id="extraeggs" name="extraeggs" [(ngModel)]="flockData.extraeggs" required>
+        <mat-error *ngIf="f.submitted && f.controls['extraeggs'].errors?.['required']">*required</mat-error>
+      </div>
+  
+      <div class="form-group">
+        <label for="feedbags">FEED BAGS</label>
+        <input matInput type="number" id="feedbags" name="feedbags" [(ngModel)]="flockData.feedbags" required>
+        <mat-error *ngIf="f.submitted && f.controls['feedbags'].errors?.['required']">*required</mat-error>
+      </div>
+      
+      <div class="form-group">
+        <label for="extrafeed">EXTRA FEED KGS</label>
+        <input matInput type="number" id="extrafeed" name="extrafeed" [(ngModel)]="flockData.extrafeed" required>
+        <mat-error *ngIf="f.submitted && f.controls['extrafeed'].errors?.['required']">*required</mat-error>
+      </div>
+  
+      <div class="form-group">
+        <label for="birdssold">BIRDS SOLD</label>
+        <input matInput type="number" id="birdssold" name="birdssold" [(ngModel)]="flockData.birdssold" required>
+        <mat-error *ngIf="f.submitted && f.controls['birdssold'].errors?.['required']">*required</mat-error>
+      </div>
+  
+      <div class="form-group">
+        <label for="errors">COUNTING ERRORS</label>
+        <input matInput type="number" id="errors" name="errors" [(ngModel)]="flockData.errors" required>
+        <mat-error *ngIf="f.submitted && f.controls['errors'].errors?.['required']">*required</mat-error>
+      </div>
+  
+      <div class="form-group">
+        <label for="remarks">REMARKS</label>
+        <input matInput type="text" id="remarks" name="remarks" [(ngModel)]="flockData.remarks" required>  
+        <mat-error *ngIf="f.submitted && f.controls['remarks'].errors?.['required']" style="display: block; text-align: center;">*required</mat-error>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+  </div>
+  

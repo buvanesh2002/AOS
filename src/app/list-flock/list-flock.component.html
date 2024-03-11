@@ -1,0 +1,79 @@
+<!-- <div>
+  <h2>List of Flocks</h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="flockName">
+      <th mat-header-cell *matHeaderCellDef>Flock Name</th>
+      <td mat-cell *matCellDef="let flock">{{ flock.flockName }}</td>
+    </ng-container>
+
+ 
+    <ng-container matColumnDef="breedName">
+      <th mat-header-cell *matHeaderCellDef>Breed Name</th>
+      <td mat-cell *matCellDef="let flock">{{ flock.breedName }}</td>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef>Start Date</th>
+      <td mat-cell *matCellDef="let flock">{{ flock.startDate }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="startAge">
+      <th mat-header-cell *matHeaderCellDef>Start Age</th>
+      <td mat-cell *matCellDef="let flock">{{ flock.startAge }}</td>
+    </ng-container>
+
+    
+    <ng-container matColumnDef="openingBirds">
+      <th mat-header-cell *matHeaderCellDef>Opening Birds</th>
+      <td mat-cell *matCellDef="let flock">{{ flock.openingBirds }}</td>
+    </ng-container>
+
+   
+
+ 
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div *ngIf="dataSource.length === 0">No data available</div>
+</div> -->
+<html>
+  <body>
+<div class="response-section" *ngIf="responseData">
+  <h2>Flock Data</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>FlockName</th>
+        <th>BreedName</th>
+        <th>StartDate</th>
+        <th>Age</th>
+        <th>NoBirds</th>
+        <th>ShedNumber</th>
+        <th>Active</th>
+        <th>Update</th>
+    
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of responseData" class="item">
+        <td>{{ item.id }}</td>
+        <td>{{ item.flockName }}</td>
+        <td>{{ item.breedName }}</td>
+        <td>{{ item.startDate }}</td>
+        <td>{{ item.age }}</td>        
+        <td>{{ item.openingBirds }}</td>
+        <td>{{ item.shedNumber }}</td>
+        <td>{{ item.active }}</td>
+        <td><button class="btn btn-secondary" (click)="getname(item.id)">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+.container {
+    margin-top: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  
+  .form-group label {
+    width: 150px; 
+    margin-right: 10px;
+    font-size: 14px;
+  }
+  
+  .form-group input {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    height:30px;
+  
+  }
+  
+  button {
+    margin-top: 20px;
+    margin-left: 300px;
+    height: 25px;
+    width:80px;
+  }
+  .mat-form-field {
+    width: 100%; 
+  }
+  .mat-error {
+  
+    
+    display: block; 
+    margin-top: 4px; 
+    font-size: 0.75rem; 
+    color: red; 
+    width: 100%; 
+    text-align: center; 
+  }
+  
+  

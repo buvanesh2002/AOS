@@ -1,0 +1,37 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <h2>+ADD FLOCK</h2>
+    <div class="form-group">
+      <label for="flockName">FLOCK NAME*</label>
+      <input matInput type="text" id="flockName" placeholder="eg: Flock1" name="flockName" [(ngModel)]="flockData.flockName" required>
+      
+      <mat-error *ngIf="f.submitted && f.controls['flockName'].errors?.['required']" style="display: block; text-align: center;">*required</mat-error>
+    </div>
+    <div class="form-group">
+      <label for="breedName">BREED NAME*</label>
+      <input matInput type="text" id="breedName" placeholder="Breed of Flock" name="breedName" [(ngModel)]="flockData.breedName" required>
+      <mat-error *ngIf="f.submitted && f.controls['breedName'].errors?.['required']">*required</mat-error>
+    </div>
+    <div class="form-group">
+      <label for="startDate">FLOCK START DATE*</label>
+      <input matInput type="date" id="startDate" name="startDate" [(ngModel)]="flockData.startDate" required>
+      <mat-error *ngIf="f.submitted && f.controls['startDate'].errors?.['required']">*required</mat-error>
+    </div>
+    <div class="form-group">
+      <label for="startAge">FLOCK START AGE*</label>
+      <input matInput type="number" id="startAge" placeholder="Age of Flocks in Days" name="startAge" [(ngModel)]="flockData.startAge" required>
+      <mat-error *ngIf="f.submitted && f.controls['startAge'].errors?.['required']">*required</mat-error>
+    </div>
+    <div class="form-group">
+      <label for="openingBirds">OPENING BIRDS*</label>
+      <input matInput type="number" id="openingBirds" placeholder="eg: 1000" name="openingBirds" [(ngModel)]="flockData.openingBirds" required>
+      <mat-error *ngIf="f.submitted && f.controls['openingBirds'].errors?.['required']">*required</mat-error>
+    </div>
+    <div class="form-group">
+      <label for="shedNumber">SHED NUMBER*</label>
+      <input matInput type="number" id="shedNumber" placeholder="eg: 1,4,...." name="shedNumber" [(ngModel)]="flockData.shedNumber" required>
+      <mat-error *ngIf="f.submitted && f.controls['shedNumber'].errors?.['required']">*required</mat-error>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>

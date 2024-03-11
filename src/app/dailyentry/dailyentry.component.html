@@ -1,0 +1,45 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <h2>+ DAILY ENTRY</h2>
+      <div class="form-group">
+        <label for="flockName">ID</label>
+        <input matInput type="text" id="flockName" placeholder="eg: Flock1" name="flockName" [(ngModel)]="flockData.id" required>
+        <!-- <mat-error *ngIf="f.submitted && f.controls['flockName'].errors?.['required']">*required</mat-error> -->
+      </div>
+      <div class="form-group">
+        <label for="startDate"> DATE</label>
+        <input matInput type="date" id="startDate" name="startDate" [(ngModel)]="flockData.date" required>
+        <!-- <mat-error *ngIf="f.submitted && f.controls['startDate'].errors?.['required']">*required</mat-error> -->
+      </div>
+    
+      <div class="form-group">
+        <label for="mortality">MORTALITY</label>
+        <input matInput type="number" id="mortality" placeholder="Mortality" name="mortality" [(ngModel)]="flockData.mortality">
+      </div>
+      <div class="form-group">
+        <label for="extraEggs">EXTRA EGGS</label>
+        <input matInput type="number" id="extraEggs" placeholder="Extra Eggs" name="extraEggs" [(ngModel)]="flockData.extraEggs">
+      </div>
+      <div class="form-group">
+        <label for="extraFeed">EXTRA FEED</label>
+        <input matInput type="number" id="extraFeed" placeholder="Extra Feed" name="extraFeed" [(ngModel)]="flockData.feed">
+      </div>
+      <div class="form-group">
+        <label for="birdsSold">BIRDS SOLD</label>
+        <input matInput type="number" id="birdsSold" placeholder="Birds Sold" name="birdsSold" [(ngModel)]="flockData.birdsSold">
+      </div>
+      <div class="form-group">
+        <label for="countErr">COUNT ERROR</label>
+        <input matInput type="number" id="countErr" placeholder="Count Error" name="countErr" [(ngModel)]="flockData.countErr">
+      </div>
+      <div class="form-group">
+        <label for="remarks">REMARKS</label>
+        <textarea matInput id="remarks" placeholder="Remarks" name="remarks" [(ngModel)]="flockData.remarks"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="trays">TRAYS</label>
+        <input matInput type="number" id="trays" placeholder="Trays" name="trays" [(ngModel)]="flockData.trays">
+      </div>
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+  </div>

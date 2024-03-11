@@ -1,0 +1,44 @@
+/* .mar-L {
+	margin-left: 21px !important;
+}
+
+.box {
+	margin-top: 28px !important;
+	height: 29px !important;
+	margin-right: 25px !important;
+	margin-left: 20px !important;
+}
+
+.nav {
+	padding-left: 0;
+	margin-bottom: 9px;
+	list-style: none;
+}
+
+.heading {
+	margin-left: 18px;
+	/* margin-top: 12px; */
+	/* font-weight: 400;
+	font-size: 1.2em;
+	font-family: bitfont1;
+	text-transform: uppercase;
+} */ 
+
+.nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #7875B5;
+    color: #fff;
+    display: flex;
+    padding: 0 16px;
+    align-items: center;
+    height: 56px;
+    /* margin : 0px 20px 10px 10px; */
+    font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+  }
+  body {
+    margin: 0 !important;
+}
+
+ 

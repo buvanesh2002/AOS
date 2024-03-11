@@ -1,0 +1,106 @@
+/* table tr {
+
+	text-align: center;
+}
+
+
+table {
+	border-top: 0px solid #DFDFDF;
+	border-collapse: collapse;
+	width: 100%;
+	margin-bottom: 2em;
+	margin-left: 16px !important;
+
+}
+
+.button {
+	color: green;
+}
+
+.mar-L {
+	margin-left: 21px !important;
+}
+
+.box {
+	margin-top: 28px !important;
+	height: 29px !important;
+	margin-right: 25px !important;
+	margin-left: 20px !important;
+}
+
+.nav {
+	padding-left: 0;
+	margin-bottom: 9px;
+	list-style: none;
+}
+
+.t-end {
+	text-align: end;
+}
+
+.m-20 {
+	margin: 20px 20px;
+}
+
+.listFiles {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.f-16 {
+	font-size: 16px;
+}
+
+.mat-column-FileDetails {
+	flex: 0 0 25%;
+	width: 25%;
+}
+
+.file-details-container {
+	max-height: 40px; 
+	overflow: hidden;
+	cursor: pointer; 
+  }
+  
+  .file-details-container.expanded {
+	max-height: none;
+  }
+  
+   */
+   table {
+	width: 100%;
+	border-collapse: collapse;
+  }
+  th, td {
+	padding: 10px;
+	border: 1px solid #ddd;
+	text-align: left;
+  }
+  th {
+	background-color: #f2f2f2;
+  }
+  tr:nth-child(even) {
+	background-color: #f2f2f2;
+  }
+  tr:hover {
+	background-color: #ddd;
+  }
+  /* Button styles */
+  .btn {
+	padding: 8px 16px;
+	font-size: 14px;
+	cursor: pointer;
+	background-color: #0056b3;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+  }
+  .btn:hover {
+	background-color: #817cd4;;
+  }
+  /* Container styles */
+  .response-section {
+	
+	margin: 20px 20px ;
+  }
