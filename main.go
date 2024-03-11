@@ -29,6 +29,10 @@ func main() {
 	router.HandleFunc("/listflock", ListFlockHandler).Methods("POST")
 	router.HandleFunc("/updateflock", UpdateflockHandler).Methods("POST")
 	router.HandleFunc("/listbyflock", ListFlockbyHandler).Methods("POST")
+	router.HandleFunc("/dailyentries",AddEntryHandler).Methods("POST")
+	router.HandleFunc("/addreminder", AddReminderHandler).Methods("POST")
+	//router.HandleFunc("/showreminder", ShowReminderHandler).Methods("POST")
+
 	directoryLocation := viper.GetString("uiDirectory")
 	log.Println("this is the UI Directory Location : ", directoryLocation)
 	router.PathPrefix("/").Handler(http.FileServer(http.Dir(directoryLocation)))
@@ -89,16 +93,19 @@ func AddFlockHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	if flockdata.FlockName == "" || flockdata.BreedName == "" || flockdata.StartDate == "" || flockdata.Age == "" || flockdata.NoBirds == "" || flockdata.ShedNumber == "" {
+	
+	if flockdata.FlockName == "" || flockdata.BreedName == "" || flockdata.StartDate == "" || flockdata.StartAge ==0 || flockdata.NoBirds == 0 || flockdata.ShedNumber == "" {
 		http.Error(w, "Incomplete or invalid flock data", http.StatusBadRequest)
 		return
 	}
+	fmt.Println("gddgyufgyugeuwy")
 	var data dto.Flockdata
 	data = dto.Flockdata{
 		FlockName:  flockdata.FlockName,
 		BreedName:  flockdata.BreedName,
 		StartDate:  flockdata.StartDate,
-		Age:        flockdata.Age,
+		StartAge:   flockdata.StartAge,
+	//	Age:        flockdata.Age,
 		NoBirds:    flockdata.NoBirds,
 		ShedNumber: flockdata.ShedNumber,
 		Active:     "true",
@@ -163,6 +170,14 @@ func ListFlockHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(list)
 }
 
+
+// func AgeHandler(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+// 	log.Println("++++++++++++++++++++++++++++  ListFlockHandler handler +++++++++++++++++++++++++")
+// 	list := service.AgeCalculator()
+// 	json.NewEncoder(w).Encode(list)
+// }
+
 func UpdateflockHandler ( w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Content-Type", "application/json")
 	log.Println("++++++++++++++++++++++++++++  UpdateflockHandler handler +++++++++++++++++++++++++")
@@ -174,7 +189,7 @@ func UpdateflockHandler ( w http.ResponseWriter, r *http.Request){
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	if flockdata.ID == ""  || flockdata.FlockName == ""  || flockdata.BreedName == "" || flockdata.StartDate == "" || flockdata.Age == "" || flockdata.NoBirds == "" || flockdata.ShedNumber == "" {
+	if flockdata.ID == ""  || flockdata.FlockName == ""  || flockdata.BreedName == "" || flockdata.StartDate == "" || flockdata.StartAge == 0 || flockdata.NoBirds == 0|| flockdata.ShedNumber == "" {
 		http.Error(w, "Incomplete or invalid flock data", http.StatusBadRequest)
 		return
 	}
@@ -283,3 +298,73 @@ func FileUploadHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write(jsonString)
 }
+
+func AddReminderHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	log.Println("++++++++++++++++++++++++++++  AddReminderHandler +++++++++++++++++++++++++")
+
+	var reminder dto.Reminder
+	fmt.Println(r.Body)
+
+	if err := json.NewDecoder(r.Body).Decode(&reminder); err != nil {
+		log.Println(err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	if reminder.Name == "" || reminder.BeforeDate ==  ""|| reminder.AfterDate == "" || reminder.Date == "" || reminder.Remarks == ""  {
+		http.Error(w, "Incomplete or invalid flock data", http.StatusBadRequest)
+		return
+	}
+	fmt.Println("gddgyufgyugeuwy")
+
+	msg, err := service.AddReminder(reminder)
+	log.Println("Received msg:", msg)
+	if err != nil {
+		http.Error(w, "Invalid Credentials", http.StatusInternalServerError)
+		return
+	}
+
+	response := struct {
+		Message string `json:"message"`
+	}{
+		Message: msg,
+	}
+	json.NewEncoder(w).Encode(response)
+
+}
+
+func AddEntryHandler (w http.ResponseWriter,r *http.Request){
+	w.Header().Set("Content-Type", "application/json")
+	log.Println("++++++++++++++++++++++++++++  AddEntryHandler handler +++++++++++++++++++++++++")
+	var entry dto.DailyEntry
+	fmt.Println("-----request-------",r.Body)
+	if err:=json.NewDecoder(r.Body).Decode(&entry); err != nil {
+		log.Println("---error in decodinng---", err)
+		http.Error(w,err.Error(),http.StatusBadRequest)
+		return
+	}
+	log.Println("navaneesh",entry)
+	if entry.ID == ""{
+		http.Error(w, "Incomplete Entry data", http.StatusBadRequest)
+		return
+	}
+	msg,err:=service.DailyEntry(entry)
+	log.Println("Reciecved mesg:",msg)
+	if err!=nil {
+		http.Error(w,"Invalid Credentials",http.StatusInternalServerError)
+		return 
+	}
+	response := struct {
+		Message string `json:"message"`
+	}{
+		Message: msg,
+	}
+	json.NewEncoder(w).Encode(response)
+}
+
+func DeleteReminderHandler(w http.ResponseWriter, r *http.Request){
+
+}
+
+
+

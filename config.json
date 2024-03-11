@@ -4,6 +4,9 @@
     "uiDirectory":"/home/bhuvaneswaran/Documents/S8-project/aviculture/AOS/static",
     "db":"Login",
     "colleection":"users",
-    "Addflock":"Flock"
+    "Addflock":"Flock",
+    "AddReminder":"Reminder",
+    "AddEntry":"Entries",
+    "AddProduction":"Production"
     
 }
