@@ -422,3 +422,45 @@ func UpdateFlockEntries(value dto.DailyEntry) string {
 	}
 	return "updation in listEntry successfully"
 }
+
+func ListFlockEntry() []dto.Flockdata{
+	log.Println("----------------Lsit Flock Entry----------------")
+  //var listarray []dto.ListEntry
+	var flock []dto.Flockdata
+	Client:=config.GetConfig()
+	collection:=Client.Database(viper.GetString("db")).Collection(viper.GetString("Addflock"))
+	log.Println("----connected to DB------------------------")
+	cur, err := collection.Find(context.Background(), bson.M{"active": "true"})
+	if err!=nil{
+		log.Println("error finding:", err)
+		log.Println(err)
+	}
+	defer Client.Disconnect(context.Background())
+	defer cur.Close(context.TODO())
+	log.Println("fsdfsdfSdfffef")
+   // var EntryLength int
+	err = cur.All(context.TODO(),&flock)
+	log.Println("asfafafafaf")
+	
+
+	
+	log.Println(flock)
+	return flock
+}
+
+func ListParticularFlock(Id string) []dto.ListEntry{
+	log.Println("========= list Particular Flock =================")
+	var entry []dto.ListEntry
+	var flock dto.Flockdata
+	flock.ID=Id
+	filter:=bson.M{"_id":flock.ID}
+	Client:=config.GetConfig()
+	collection:=Client.Database(viper.GetString("db")).Collection(viper.GetString("Addflock"))
+	err:=collection.FindOne(context.TODO(),filter).Decode(&flock)
+    if err!=nil {
+		log.Println("error fetching:",err)
+		log.Fatal(err)
+	}
+	 entry=append(entry, flock.ListEntry...)
+	return entry
+}
